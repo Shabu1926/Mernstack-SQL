@@ -1,0 +1,11 @@
+Delete----
+
+DELETE FROM table_name WHERE condition;
+
+eg:
+
+DELETE FROM Customers WHERE CustomerName='Alfreds Futterkiste';
+
+Drop----
+
+DROP DATABASE stores;
