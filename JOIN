@@ -1,0 +1,90 @@
+
+Here are the different types of the JOINs in SQL:
+
+(INNER) JOIN: Returns records that have matching values in both tables
+
+[table 1:students, table 2:staffs]
+
+ select * from students inner join staffs on students.id_no=staffs.id_no;
++-------+---------+-------+------------+--------+--------+--------+-------+-------+
+| id_no | name    | Batch | DOB        | Sid_no | Sname  | SClass | Sphno | id_no |
++-------+---------+-------+------------+--------+--------+--------+-------+-------+
+|   101 | JAVITH  | A1    | 2001-03-19 |      1 | AKBAR  | 4A     | 90876 |   101 |
+|   102 | SHAHIB  | B2    | 2018-05-31 |      2 | MYDEEN | 6B     | 65984 |   102 |
+|   104 | SHABANA | D4    | 2004-02-26 |      4 | MAMTHA | 8D     | 67264 |   104 |
++-------+---------+-------+------------+--------+--------+--------+-------+-------+
+3 rows in set (0.00 sec)
+
+[table 1:staffs, table 2:students]
+
+select * from staffs inner join students on students.id_no=staffs.id_no;
++--------+--------+--------+-------+-------+-------+---------+-------+------------+
+| Sid_no | Sname  | SClass | Sphno | id_no | id_no | name    | Batch | DOB        |
++--------+--------+--------+-------+-------+-------+---------+-------+------------+
+|      1 | AKBAR  | 4A     | 90876 |   101 |   101 | JAVITH  | A1    | 2001-03-19 |
+|      2 | MYDEEN | 6B     | 65984 |   102 |   102 | SHAHIB  | B2    | 2018-05-31 |
+|      4 | MAMTHA | 8D     | 67264 |   104 |   104 | SHABANA | D4    | 2004-02-26 |
++--------+--------+--------+-------+-------+-------+---------+-------+------------+
+3 rows in set (0.00 sec)
+
+LEFT (OUTER) JOIN: Returns all records from the left table, and the matched records from the right table
+
+[table 1:students, table 2:staffs]
+
+mysql> select * from students left join staffs on students.id_no=staffs.id_no;
++-------+---------+-------+------------+--------+--------+--------+-------+-------+
+| id_no | name    | Batch | DOB        | Sid_no | Sname  | SClass | Sphno | id_no |
++-------+---------+-------+------------+--------+--------+--------+-------+-------+
+|   101 | JAVITH  | A1    | 2001-03-19 |      1 | AKBAR  | 4A     | 90876 |   101 |
+|   102 | SHAHIB  | B2    | 2018-05-31 |      2 | MYDEEN | 6B     | 65984 |   102 |
+|   103 | ZARA    | C3    | 2020-12-07 |   NULL | NULL   | NULL   |  NULL |  NULL |
+|   104 | SHABANA | D4    | 2004-02-26 |      4 | MAMTHA | 8D     | 67264 |   104 |
++-------+---------+-------+------------+--------+--------+--------+-------+-------+
+4 rows in set (0.00 sec)
+
+
+
+[table 1:staffs, table 2:students]
+
+ select * from staffs left join students on students.id_no=staffs.id_no;
++--------+------------+--------+-------+-------+-------+---------+-------+------------+
+| Sid_no | Sname      | SClass | Sphno | id_no | id_no | name    | Batch | DOB        |
++--------+------------+--------+-------+-------+-------+---------+-------+------------+
+|      1 | AKBAR      | 4A     | 90876 |   101 |   101 | JAVITH  | A1    | 2001-03-19 |
+|      2 | MYDEEN     | 6B     | 65984 |   102 |   102 | SHAHIB  | B2    | 2018-05-31 |
+|      3 | ASHA SONAL | 12C    | 97567 |   110 |  NULL | NULL    | NULL  | NULL       |
+|      4 | MAMTHA     | 8D     | 67264 |   104 |   104 | SHABANA | D4    | 2004-02-26 |
++--------+------------+--------+-------+-------+-------+---------+-------+------------+
+4 rows in set (0.00 sec)
+
+RIGHT (OUTER) JOIN: Returns all records from the right table, and the matched records from the left table
+
+[table 1:students, table 2:staffs]
+
+mysql> select * from students right join staffs on students.id_no=staffs.id_no;
++-------+---------+-------+------------+--------+------------+--------+-------+-------+
+| id_no | name    | Batch | DOB        | Sid_no | Sname      | SClass | Sphno | id_no |
++-------+---------+-------+------------+--------+------------+--------+-------+-------+
+|   101 | JAVITH  | A1    | 2001-03-19 |      1 | AKBAR      | 4A     | 90876 |   101 |
+|   102 | SHAHIB  | B2    | 2018-05-31 |      2 | MYDEEN     | 6B     | 65984 |   102 |
+|  NULL | NULL    | NULL  | NULL       |      3 | ASHA SONAL | 12C    | 97567 |   110 |
+|   104 | SHABANA | D4    | 2004-02-26 |      4 | MAMTHA     | 8D     | 67264 |   104 |
++-------+---------+-------+------------+--------+------------+--------+-------+-------+
+4 rows in set (0.00 sec)
+
+
+[table 1:staffs, table 2:students]
+
+ select * from staffs right join students on students.id_no=staffs.id_no;
++--------+--------+--------+-------+-------+-------+---------+-------+------------+
+| Sid_no | Sname  | SClass | Sphno | id_no | id_no | name    | Batch | DOB        |
++--------+--------+--------+-------+-------+-------+---------+-------+------------+
+|      1 | AKBAR  | 4A     | 90876 |   101 |   101 | JAVITH  | A1    | 2001-03-19 |
+|      2 | MYDEEN | 6B     | 65984 |   102 |   102 | SHAHIB  | B2    | 2018-05-31 |
+|   NULL | NULL   | NULL   |  NULL |  NULL |   103 | ZARA    | C3    | 2020-12-07 |
+|      4 | MAMTHA | 8D     | 67264 |   104 |   104 | SHABANA | D4    | 2004-02-26 |
++--------+--------+--------+-------+-------+-------+---------+-------+------------+
+4 rows in set (0.00 sec)
+
+FULL (OUTER) JOIN: Returns all records when there is a match in either left or right table
+
