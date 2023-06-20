@@ -1,0 +1,21 @@
+MIN() ----
+
+SELECT MIN(column_name)
+FROM table_name
+WHERE condition;
+
+Example:
+
+SELECT MIN(Price) AS SmallestPrice
+FROM Products;
+
+MAX() ------
+
+SELECT MAX(column_name)
+FROM table_name
+WHERE condition;
+
+Example:
+
+SELECT MAX(Price) AS LargestPrice
+FROM Products;
