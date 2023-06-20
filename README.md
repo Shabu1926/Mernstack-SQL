@@ -1,0 +1,2 @@
+# Mernstack-SQL
+sql syntaxs
