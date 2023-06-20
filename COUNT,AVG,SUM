@@ -1,0 +1,17 @@
+Count----
+
+SELECT COUNT(column_name)
+FROM table_name
+WHERE condition;
+
+Avg---
+
+SELECT AVG(column_name)
+FROM table_name
+WHERE condition;
+
+Sum---
+
+SELECT SUM(column_name)
+FROM table_name
+WHERE condition;
